@@ -1,40 +1,42 @@
+
 # define
 tag: app_name
 msg: message log
 
 # log_level
 --- user level ---
-1.	msglog_v(tag,msg):	verbose
-2.	msglog_d(tag,msg): 	debug
-3.	msglog_i(tag,msg): 	infomation
+1.  msglog_v(tag,msg):  verbose
+2.  msglog_d(tag,msg):  debug
+3.  msglog_i(tag,msg):  infomation   
 
---- system level ---
-4.	msglog_w(tag,msg): 	warn
-5.	msglog_e(tag,msg): 	error
-6.1	msglog_a(tag,msg):	assert
-6.2	msglog_wtf(tag,msg):	what a terrible failure(alias function of assert)
+--- system level ---   
+4.  msglog_w(tag,msg):  warn   
+5.  msglog_e(tag,msg):  error  
+6.1 msglog_a(tag,msg):  assert  
+6.2 msglog_wtf(tag,msg):    what a terrible failure(alias function of assert)  
 
 # log destination
 Bit flag config to set log destination, config per tag per log_level
 ## bit flag values
-- stderr
+- stdout: debug print 
+- stderr: debug print 
 - local log file by date
 - udp server(future task, no need to implement now)
 - ... (future task, no need to implement now)
 ## default config
-- log.v: stderr
-- log.d: stderr
-- log.i: stderr | local log file by date
-- log.w: stderr
-- log.e: stderr
-- log.a: stderr | local log file by date
+- msglog_v: stdout
+- msglog_d: stderr
+- msglog_i: stderr | local log file by date
+- msglog_w: stdout
+- msglog_e: stderr
+- msglog_a: stderr | local log file by date
 
 # server apps
 - list all tag 
 - list all destination config by tag
 - set destination by tag and log_level
 - save local log file by date
-	+ init_func(root_locallog_path)
+    + init_func(root_locallog_path)
 - list local log files
 - cat local log files by date
 - auto remove local logs older than 30 days
@@ -66,3 +68,11 @@ $ cat 20170629.log
 {"tag":"appname1","lvl":"a","utime":"1498726199","msg":"this is log message4..."},
 $
 ```
+
+Note that you can use json array `[]` for json loading, for example,   
+```
+mylog = [
+{"tag":"appname1","lvl":"v","utime":"1498726192","msg":"this is log message1..."},
+{"tag":"appname1","lvl":"a","utime":"1498726199","msg":"this is log message4..."},
+]
+```  
