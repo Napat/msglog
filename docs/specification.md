@@ -1,22 +1,20 @@
 
-# define
+# Define
 tag: app_name
 msg: message log
 
-# init function
+# Init function
 ```
 cfg = new_msglog("tag_name");
 ```
 
-# log_level
---- user level ---
+# Log_level  
 1.  Verbose  
      msglog_v(cfg, msg)        
 2.  Debug  
      msglog_d(cfg, msg)        
 3.  Information     
-     msglog_i(cfg, msg)      
---- system level ---   
+     msglog_i(cfg, msg) 
 4.  Warn  
      msglog_w(cfg, msg)     
 5.  Error  
@@ -25,15 +23,15 @@ cfg = new_msglog("tag_name");
      6.1 msglog_a(cfg, msg)      assert  
      6.2 msglog_wtf(cfg, msg):   what a terrible failure(alias function of assert)  
 
-# log destination
+# Log destination
 Bit flag config to set log destination, config per tag per log_level  
-## bit flag values
+## Bit flag values
 - stdout: debug print  
 - stderr: debug print  
 - local log file by date  
 - udp server(future task, no need to implement now)  
 - ... (future task, no need to implement now)  
-## default config
+## Default config
 - msglog_v: stdout  
 - msglog_d: stderr  
 - msglog_i: stdout | local log file by date  
@@ -41,7 +39,7 @@ Bit flag config to set log destination, config per tag per log_level
 - msglog_e: stderr  
 - msglog_a: stderr | local log file by date  
 
-# server apps
+# Server apps
 - list all tag   
 - list all destination config by tag  
 - set destination by tag and log_level 
@@ -59,11 +57,11 @@ Bit flag config to set log destination, config per tag per log_level
 - filter by tag  
 + show by level  
 
-# client
+# Client
 - register by tag  
 
-# log pattern
-## detail
+# Log pattern
+## Detail
  1.tag: tag  
  2.lvl: log level   
  3.utime: unix time  
@@ -79,7 +77,7 @@ $ cat 20170629.log
 $
 ```
 
-Note that you can use json array `[]` for json loading, for example,    
+## Trick: For javascript loading data, you may use json array `[]`, e.g.,    
 ```
 mylog = [
 {"tag":"appname1","lvl":"v","utime":"1498726192","msg":"this is log message1..."},
