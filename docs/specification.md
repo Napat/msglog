@@ -35,9 +35,12 @@ Bit flag config to set log destination, config per tag per log_level
 - msglog_v: stdout  
 - msglog_d: stderr  
 - msglog_i: stdout | local log file by date  
-- msglog_w: stdout  
-- msglog_e: stderr  
+- msglog_w: stdout | local log file by date  
+- msglog_e: stderr | local log file by date 
 - msglog_a: stderr | local log file by date  
+
+# Logkeeper  
+Default config: Delete log older than 365 days.  
 
 # Server apps
 - list all tag   
